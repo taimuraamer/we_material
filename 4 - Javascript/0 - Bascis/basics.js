@@ -78,10 +78,123 @@ var age = 100;
 //     i--;
 // }
 
-i = 10;
+// i = 10;
 
-do {
-    console.log(i)
-    i++;
+// do {
+//     console.log(i)
+//     i++;
+// }
+// while (i <= 20);
+
+// functions 
+
+// function print() // definition
+// {
+//     console.log("THis is a line from function")
+// }
+
+
+// print(); // call
+
+// function add(a, b) {
+//     return a + b;
+// }
+
+// console.log(add(10,100))
+// console.log(add(120,100))
+// console.log(add(90,100))
+// console.log(add(60,100))
+
+// function hello(name="Guest")
+// {
+
+//     // (!name ? console.log("Hello Guest") : console.log("Hello " + name))
+//     console.log("Hello " + name)
+    
+// }
+
+// hello("Abdul Wadood")
+
+// function printSequence(start, end, jump=1) {
+//     for(var i=start; i<=end; i = i + jump)
+//     {
+//         console.log(i);
+//     }
+// }
+
+// printSequence(1,10);
+
+
+// Arrays
+
+function printArray(array) {
+    
+for(var i=0;i<array.length;i++)
+{
+    console.log(array[i])
 }
-while (i <= 20);
+}
+
+var age = [20,23,24,26,29,30,32,33];
+var names = ["Faizan", "Naeem", "Zafar", "Amjad", "Salahuddin"];
+var names2 = ["Abdullah", "Abdul Wadood"]
+
+var address = ["Hayatabad, Peshawar", "Alharam, Khyber Agency", "Kohat, Khadi Zai"];
+
+// for(var i=0;i<age.length;i++)
+// {
+//     console.log(age[i])
+// }
+
+// names.push("Farooq");
+// names.pop()
+// delete names[0]
+
+// names.shift();
+// names.unshift("Test");
+
+// var fullNames = names.concat(names2);
+
+// var test = names.toString(); // array to string
+
+// var names3 = test.split(",") // string to array
+
+// age.sort();
+
+// var newNames = names.slice(0,2);
+
+// names.push("Test");
+
+// names.splice(0,3,"Mansoor", "Test2", "Test3")
+
+// var n = names.lastIndexOf("Naeem")
+
+// if(n<0)
+//     console.log("Not found.")
+// else if(n >= 0)
+//     console.log("Found on index " + n);
+// printArray(names);
+
+
+names.join("*")
+
+
+// array functions
+// foreach
+
+// array.foreach()
+// {
+
+// }
+// array.push();
+// array.pop();
+// array.shift();
+// array.unshift();
+// array.concat();
+// array.foreach();
+// array.toString();
+// delete keyword;
+// array.splice();
+// array.slice();
+
+
