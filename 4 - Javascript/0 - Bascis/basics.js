@@ -197,4 +197,53 @@ names.join("*")
 // array.splice();
 // array.slice();
 
+// const obj = {
+//     name: "",
+//     id: 123,
+//     isEnrolled: true,
+//     gpa: 3.2,
+//     calcGPA(a) {
+//         return this.gpa * 0.33 * a;
+//     }
+// }
 
+// Arrow Functions
+
+// function sum(a, b) {
+//     return a + b;
+// }
+
+// const sum = (a, b) => {
+//     return a + b;
+// }
+
+// const sum = (a, b) => { a + b }
+
+// const sum = (a, b) => a + b;
+
+// function test() {
+//     return {
+//         name:"testing",
+//         email:"test@test.com"
+//     }
+// }
+
+const test = () => (( {
+    name: "adsfasdfasdf",
+    email:"asdfasdf"
+}   
+))
+var abc = test().name
+
+
+class Test  {
+    name = 10;
+    sum() {
+        return this.name;
+    }
+
+    abc = () => {
+        this.name
+    }
+
+}
