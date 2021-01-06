@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Loading Data using AJAX</title>
+    </head>
+
+    <body>
+        <button id="btn">Load</button>
+        <div id="data"></div>
+
+        <script>
+            var button = document.getElementById("btn");
+            button.addEventListener("click", loadData);
+
+            function loadData()
+            {
+                var resp;
+                xhr = new XMLHttpRequest();
+                xhr.open("GET", "https://gist.githubusercontent.com/Bachmann1234/a2b4207caa29dbc23e29/raw/37825725807d087455200801ccbb03c16448efc6/gistfile1.txt", true);
+
+                xhr.onreadystatechange = function()
+                {
+                    if(xhr.status == 200 && xhr.readyState == 4)
+                    {
+                        resp = JSON.parse(xhr.responseText);
+                        // console.log(resp)
+                        // document.getElementById("data").innerHTML = resp.items[0].volumeInfo.title;
+                    }
+                };
+
+                xhr.send();    
+
+
+
+            }
+        </script>
+
+
+    </body>
+
+
+
+</html>

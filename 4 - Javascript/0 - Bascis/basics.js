@@ -228,22 +228,22 @@ names.join("*")
 //     }
 // }
 
-const test = () => (( {
-    name: "adsfasdfasdf",
-    email:"asdfasdf"
-}   
-))
-var abc = test().name
+// const test = () => (( {
+//     name: "adsfasdfasdf",
+//     email:"asdfasdf"
+// }   
+// ))
+// var abc = test().name
 
 
-class Test  {
-    name = 10;
-    sum() {
-        return this.name;
-    }
+// class Test  {
+//     name = 10;
+//     sum() {
+//         return this.name;
+//     }
 
-    abc = () => {
-        this.name
-    }
+//     abc = () => {
+//         this.name
+//     }
 
-}
+// }

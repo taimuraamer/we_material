@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using Ajax</title>
+  </head>
+  <body>
+    <h1>Using Ajax from Local JSON file</h1>
+    <button id="btn">Click</button>
+    <div id="books"></div>
+    <script>
+      let btn = document.getElementById("btn");
+      btn.addEventListener("click", loadBooks);
+
+      function loadBooks() {
+        var text = "";
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "books.json", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.status == 200 && xhr.readyState == 4) {
+            const response = JSON.parse(xhr.responseText);
+            for(var i=0;i<response.length;i++) {
+                text+= '<p>' + response[i].title + '</p>';
+            }
+            document.getElementById('books').innerHTML = text;
+          }
+        };
+
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
