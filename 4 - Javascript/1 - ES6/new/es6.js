@@ -6,8 +6,20 @@ const students = [
     end: 2016,
     gpa: 3.2,
   },
-  { name: "Kelly", dept: "Psychology", start: 2010, end: 2012, gpa: 3.3 },
-  { name: "Rayn", dept: "Computer Science", start: 2011, end: 2013, gpa: 2.7 },
+  {
+    name: "Kelly",
+    dept: "Psychology",
+    start: 2010,
+    end: 2012,
+    gpa: 3.3,
+  },
+  {
+    name: "Rayn",
+    dept: "Computer Science",
+    start: 2011,
+    end: 2013,
+    gpa: 2.7,
+  },
   {
     name: "Michal",
     dept: "Political Science",
@@ -15,9 +27,27 @@ const students = [
     end: 2022,
     gpa: 2.5,
   },
-  { name: "Andy", dept: "Physics", start: 2016, end: 2020, gpa: 2.2 },
-  { name: "Jim", dept: "Physics", start: 2017, end: 2021, gpa: 3.0 },
-  { name: "Pam", dept: "Political Science", start: 2011, end: 2013, gpa: 3.1 },
+  {
+    name: "Andy",
+    dept: "Physics",
+    start: 2016,
+    end: 2020,
+    gpa: 2.2,
+  },
+  {
+    name: "Jim",
+    dept: "Physics",
+    start: 2017,
+    end: 2021,
+    gpa: 3.0,
+  },
+  {
+    name: "Pam",
+    dept: "Political Science",
+    start: 2011,
+    end: 2013,
+    gpa: 3.1,
+  },
 ];
 
 const ages = [33, 12, 54, 5, 18, 17, 13, 61, 25, 32, 44, 16, 15, 64, 34];
@@ -128,6 +158,15 @@ const ages = [33, 12, 54, 5, 18, 17, 13, 61, 25, 32, 44, 16, 15, 64, 34];
 // const after2013 = students.filter(item => (item.start >= 2012 && item.end <= 2016));
 // console.log(after2013)
 
+// const agesTimesTwo = ages.map((age) => age * 2)
+// console.log(agesTimesTwo)
+
+// const newGPA = students
+//                     .map((student) => student.gpa * 2)
+//                     .map((student) => student.gpa * 3)
+
+// console.log(newGPA)
+
 // map
 // const name = students.map(function (item) {
 //     return item.name;
@@ -147,6 +186,21 @@ const ages = [33, 12, 54, 5, 18, 17, 13, 61, 25, 32, 44, 16, 15, 64, 34];
 // console.log(newAges);
 
 // sort
+
+// const sortedAges = ages.sort((num1, num2) => {
+//   return num2 - num1;
+// })
+
+// console.log(sortedAges)
+
+// const gpa = students.map((student) => {
+//   return student.gpa 
+// }).sort((s1, s2) => {
+//   return s2 - s1;
+// })
+
+// console.log(gpa)
+
 // const sorted = students.sort(function (c1, c2) {
 //     if(c1.start > c2.start)
 //     {
@@ -168,6 +222,28 @@ const ages = [33, 12, 54, 5, 18, 17, 13, 61, 25, 32, 44, 16, 15, 64, 34];
 // console.log(sorted);
 
 // reduce
+
+// let sum = 0;
+// for(let i=0;i<ages.length;i++)
+// {
+//   sum = sum + ages[i];
+// }
+
+// console.log(sum);
+
+// const init = 0;
+// const sumAges = ages.reduce((sum, age) => {
+//   return sum += age;
+// },init)
+
+// console.log(sumAges)
+
+// const sumGPA = students.reduce((sum, student) => {
+//   return sum += student.gpa
+// },0)
+
+// console.log(sumGPA);
+
 // ageSum = 0;
 // for(let i=0;i<ages.length;i++)
 // {
@@ -206,6 +282,21 @@ const ages = [33, 12, 54, 5, 18, 17, 13, 61, 25, 32, 44, 16, 15, 64, 34];
 
 // console.log(arr3);
 
+// const s1 = "This is line one. "
+// const s2 = "This is line two."
+
+// const s3 = s1.concat(s2);
+
+// console.log(s3)
+
+// const a1 = [12,34,45,5,65]
+// const a2 = [12,34,45,5,65]
+
+
+// const result = a1[0] * a2[3];
+
+// console.log(result)
+
 // spread
 // combine elements of two arrays.
 // var subjects = ['Web Designing', 'Database', 'OOP'];
@@ -219,7 +310,7 @@ const ages = [33, 12, 54, 5, 18, 17, 13, 61, 25, 32, 44, 16, 15, 64, 34];
 //     console.log(a+b+c)
 // }
 
-// var args = [0,1,2];
+// var args = [0,1,2,4];
 
 // add(...args);
 
@@ -231,3 +322,24 @@ const ages = [33, 12, 54, 5, 18, 17, 13, 61, 25, 32, 44, 16, 15, 64, 34];
 // }
 // var arr = multiply(2,3,4,5);
 // console.log(arr);
+
+
+// function sum(arr) {
+//   return arr.reduce((total, arr) => total+=arr,0)
+// }
+
+// arr = [2,3,45,65,6]
+
+// const total = sum(...arr);
+
+// console.log(total)
+
+
+// function sum(arr)
+// {
+
+// }
+
+// arr = [2,3,5,65]
+
+// sum(...arr)

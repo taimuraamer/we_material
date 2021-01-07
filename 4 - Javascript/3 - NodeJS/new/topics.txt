@@ -1,0 +1,25 @@
+simple running script js`
+require/import
+fs
+fs read/write/append
+moduel.exports
+    variables
+    functions
+
+npm installations (validator)
+    isEmail
+    isURL
+
+node modules folder
+    npm install
+    
+
+chalk library
+
+nodemon 
+    global installation
+
+command line args
+    process.argv
+    yargs
+    
