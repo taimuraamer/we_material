@@ -23,3 +23,7 @@ command line args
     process.argv
     yargs
     
+node debugger
+    debugger (keyword)
+    node app.js inspect
+    chrome ... chrome://inspect
