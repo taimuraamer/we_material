@@ -23,7 +23,7 @@
                     {
                         txt = JSON.parse(xhr.responseText);
 
-                        document.getElementById("data").innerHTML = txt[0].cars["car1"];
+                        document.getElementById("data").innerHTML = txt[0].cars["car1"] + "<img src='" + txt[0].image + "' >";
                     }
                 };
 

@@ -5,9 +5,8 @@
 // function two()
 // {
 //     setTimeout(() => {
-//         console.log("two");
-//     },3000)
-
+//         console.log('Two')
+//     }, 3000)
 // }
 // function three()
 // {
@@ -48,9 +47,9 @@
 //     two(() => {
 //         three(() => {
 
-//         });
-//     });
-// });
+//         })
+//     })
+// })
 
 // 2 - Promises
 
@@ -87,35 +86,35 @@
 //     })
 // })
 
-// function one() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       console.log("one");
-//       resolve("done");
-//     }, 5000);
-//   });
-// }
-// function two() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       console.log("two");
-//       resolve("done");
-//     }, 3000);
-//   });
-// }
-// function three() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       console.log("three");
-//       resolve("done");
-//     }, 2000);
-//   });
-// }
+function one() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("one");
+      resolve("done");
+    }, 5000);
+  });
+}
+function two() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("two");
+      resolve("done");
+    }, 3000);
+  });
+}
+function three() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("three");
+      resolve("done");
+    }, 2000);
+  });
+}
 
-// async function run() {
-// await one();
-// await two();
-// await three();
-// }
+async function run () {
+    await one();
+    await two();
+    await three();
+}
 
-// run();
+run();

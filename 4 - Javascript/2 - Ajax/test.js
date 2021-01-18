@@ -19,5 +19,6 @@ xhr.onload = function () {
 // Create and send a GET request
 // The first argument is the post type (GET, POST, PUT, DELETE, etc.)
 // The second argument is the endpoint URL
-xhr.open('GET', 'https://skew.com/d-solo/hYed6CTmz/bitcoin-options?orgId=1&to=now&from=now-3M&panelId=76&theme=light&refresh=30s');
+// xhr.open('GET', 'https://skew.com/d-solo/hYed6CTmz/bitcoin-options?orgId=1&to=now&from=now-3M&panelId=76&theme=light&refresh=30s');
+xhr.open('GET', 'data.json', true)
 xhr.send();

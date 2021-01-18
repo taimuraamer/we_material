@@ -21,7 +21,19 @@ function loadDoc()
   {
     if (this.readyState == 4 && this.status == 200) 
     {
-      var data = JSON.parse(this.responseText);
+      var data = this.responseText;
+      const users = JSON.parse(data);
+      let text = "";
+      // users.forEach(user => {
+      //   text = text + `Login ${user.login} - Type: ${user.type}`
+      // });
+      users.filter((user) => user.site_admin)
+           .forEach((notAdmin) => {
+            text += notAdmin.login + "<br>";
+      })
+      
+      document.getElementById('displayUsers').innerHTML = text;
+
       //document.getElementById("demo").innerHTML = "Name :" + data[0].name + "Age: " + data[0].age + " Car: " + data[0].cars["car1"];
     }
   };
