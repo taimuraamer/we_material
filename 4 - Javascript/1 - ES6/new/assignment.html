@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Promises</title>
+</head>
+
+<body>
+    <h1>Using Promisese</h1>
+    <button id="loadBtn">Load Users</button>
+    <div id="users"></div>
+    <script>
+        const btn = document.getElementById('loadBtn');
+        btn.addEventListener('click', run)
+
+        function loadData() {
+
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://api.github.com/users', true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.status == 200 && xhr.readyState == 4) {
+                        const users = JSON.parse(xhr.responseText);
+                        let html = "<table border='1'><tr><th>ID</th><th>Login</th><th>Type</th></tr>";
+                        users.forEach((user) => {
+                            html = html + "<tr>";
+                            html = html + "<td> " + user.id + " </td>"
+                            html = html + "<td> " + user.login + " </td>"
+                            html = html + "<td> " + user.type + " </td>"
+                            html = html + "</tr>";
+                        })
+                        html = html + "</table>";
+                        document.getElementById('users').innerHTML = html;
+                        resolve('loaded.');
+                    }
+                }
+
+                xhr.send();
+
+            })
+        }
+
+        async function run() {
+
+            await loadData();
+        }
+    </script>
+</body>
+
+</html>
