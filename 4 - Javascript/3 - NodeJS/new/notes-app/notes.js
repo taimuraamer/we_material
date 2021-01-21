@@ -3,7 +3,7 @@ const chalk = require("chalk");
 
 const addNote = (title, body) => {
     let notes = loadNotes();
-    const duplicateNote = notes.find((note) => note.title === title)
+    const duplicateNotes = notes.find((note) => note.title === title)
     if(!duplicateNotes) {
         notes.push({
         title: title,
@@ -60,7 +60,6 @@ const readNote = (title) => {
     }
 }
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
     listNotes: listNotes,

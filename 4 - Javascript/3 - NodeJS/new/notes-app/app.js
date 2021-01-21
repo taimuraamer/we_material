@@ -19,9 +19,9 @@ yargs.command({
     },
     handler: function (argv) {
         notes.addNote(argv.title, argv.body)
-        
     }
 })
+
 yargs.command({
     command: 'remove',
     describe: 'Remove a note',
