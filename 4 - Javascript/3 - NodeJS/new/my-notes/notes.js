@@ -14,15 +14,15 @@ const chalk = require('chalk')
     function remove(title) {
         const notes = loadNotes();
         const remaining = notes.filter((note) => note.title != title)
-        if(remaining.length == 0) {
-            console.log(chalk.red(`Title: ${title} not found.`))
+        if(notes.length > remaining.length)
+        {
+            const txt = JSON.stringify(remaining);
+            fs.writeFileSync('notes.json', txt)
+            console.log(`Title: ${title} removed.`)
         }
         else {
-            const txt = JSON.stringify(remaining);
-            fs.writeFileSync('notes.json', txt);
-            console.log('Remove one note with title : ' + title)
-        }
-        
+            console.log(`Title: ${title} not found!`)
+        }        
     }
     function viewAll() {
         const notes = loadNotes();

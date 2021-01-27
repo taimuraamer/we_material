@@ -1,0 +1,170 @@
+1 - Setting up environment
+    - ES7 React/Redux/GraphQL/React-Native snippets (VSCode Extension)
+    - Installing NodeJS and Yarn
+
+2 - Hello React
+    - Folder Structure
+        create public/index.html
+        create public/scripts/app.js
+        create src/app.js
+        yarn global add live-server
+        live-server public
+        script link react, react-dom app.js from CDN
+        -- Configuring ES Lint
+            yarn add eslint -D
+            npx eslint --init
+            ** prettier 
+                yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+    - JSX
+        var template = <p>This is valid</p>
+        ReactDOM.render(template, appRoot)
+        Babel and createElement 
+
+    - Setting Up Babel
+        yarn global add babel-cli
+        yarn add babel-preset-react babel-preset-env
+        babel src/app.js --out-file=public/scripts/app.js --presets=env,react (--watch)
+
+    - JSX exploring
+        template = (
+            <div>
+            </div>
+        )
+        **Challenge**
+            create your own template with
+                h1
+                p
+                ol > li 
+        <h1>{username.toUpperCase()}</h1> (var username)
+        <p>{user.name}, {user.age}, {user.login}</p> from user object
+        ** Challenge ** 
+            create your own object for posts and write JSX expressions
+        
+        Conditional Rendering
+            template = ({getLocation()}) we can call functions in JSX expressions
+            {user.name ? user.name : 'Guest'}
+            true && 'Text' > text
+            false && 'text' > false
+            {user.age >= 18 && <p>Legal</p>}
+
+            ** Challenge **
+                only render user location if it exists
+                render users choices 'only show text not options' (array in object) only if it's length is > 0
+                check if options array is empty show text 'no options' if not show 'here are your options'
+        
+        Events and Attributes
+            React attributes (className not class) DOM elements
+            Counter example (+,-)
+            attributes can be JSX expressions id={someValue}
+            <button onClick={addOne}>+</button>
+                onClick=(() => {
+
+                })
+            ** Challenge **
+                Add -1 button with reference function
+                Add reset button with console.log and reference function
+        
+        Data Binding
+            create renderApp function with 
+                JSX template 
+                ReactDOM.render call
+            calling render in functions (plus, minus, reset)
+            ** Challenge ** 
+                add functionality to - and reset
+            code rendering in browsing (flashing animation)
+        
+        Forms and Input
+            obj = {options: ['one', 'two']}
+            <form>
+                <input type="text" name="option"/>
+                <button>Add Option</button> 
+                (this results in full page refresh)
+            <form onSubmit={handleForm}>
+                handleForm = (e) => {
+                    e.preventDefault();
+                }
+                (this will result in no full page refresh)
+                e.target.elements.option.value
+                obj.options.push(option) (option is user input)
+
+                ** Challenge **
+                    create render function to render the options pushed to the object (show only length)
+                    create a remove all button with functionality and rendering (show only length)
+        
+        Arrays in JSX
+             {
+                 [77, 88, 'test', null, undefined, true]
+                 (show in chrome elements)
+                 {
+                     [<p key="1"></p><p key="2"></p>,<p key="3"></p>]
+                 }
+             }
+             ** Challenge **
+                use options array in the object to map over items and return paragraphs
+
+        Picking an Option
+            create a button and a random method handler to generate random number and select option 
+                const r = Math.floor(Math.random() * app.option.length)
+                option = app.option[r]
+
+        Final Challenge
+            Visibility toggle
+                click button to show text and 
+                change the button text as well
+
+                clicking it again should change it back
+                and hide the text
+
+3 - React Components
+    - class Header extends React.Component {
+        render() {
+            return <p></p>
+        }
+    }
+    const jsx = {
+        <div>
+            <h1>Title</h1>
+            <Header />
+        </div>
+        creating different Components, Header, Action, Options, Option, Add Option
+        create Root component NotesApp and adding every component in it
+        rendering the componenet itself render(<NotesApp />, root)
+        nesting option componenet in options
+    
+    passing props to componenets
+        - <Header title={title} subTitle={sub} />
+        - Pass options array to Options componenet
+        - parse options array
+        - pass each option to Option compoent and show it there
+
+    Handle Action compoent using inner function within Action class
+    Add remove all button in Options componenet
+    handle form input and add option field with function
+    Method binding
+         const obj = {
+             name: 'test'
+             getName() {
+                 return this.name;
+             }
+         }
+
+        const getName = obj.getName; // obj.getName().bind()
+        clg(getName())
+
+        add this.removeAll.bind(this) to work with props in removeAll function
+        constructor(props) {
+            super(props)
+            this.removeAll = this.removeAll.bind(this);
+        }
+
+    Handling state using Counter app example
+        add() {
+        this.setState((prevState) => {
+            return {
+                count: prevState.count + 1
+            }
+        })
+    }
+    challenge Visibility toggle using state
+
+    
