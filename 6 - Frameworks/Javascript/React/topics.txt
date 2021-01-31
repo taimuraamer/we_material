@@ -167,4 +167,92 @@
     }
     challenge Visibility toggle using state
 
-    
+    Lifecycle methods
+        - componenetDidMount() {
+            const json = JSON.parse(localStorage.getItem('options'))
+            this.setState(() => ({options: json}))
+        }
+        - compoenentDidUpdate(prevProps, prevState) {
+            if(prevState.optons.length != this.state.options.length) 
+                json = JSON.stirngify(this.state.options)
+                localStorage.setItem('options', json)
+        }
+        - componenetWillUnmount()
+
+    Webpack
+        - Understanding webpack (it is module bundler and helps generate bundle.js)
+        - uninstall global dependencies (yarn global remove)
+            live-server
+            babel-cli
+        - install live-server locally
+            yarn add live-server babel-cli
+
+        - install webpack locally
+            yarn add webpack
+                add scripts in package.json 
+                    "build": "webpack --watch"
+        - create webpack.config.js in the root
+            - we have to show it entry
+            - bundle.js should be provided
+                module.exports = {
+                    entry: './src/app.js'
+                    output: {
+                        path: path.join(__dirname, 'public'),
+                        filename: 'bundle.js'
+                    }
+                }
+            remove scripts folder from public
+            remove react cdn and change /scripts/app.js to /bundle.js
+
+            named exports and imports {square}
+                export const square
+                const square
+                    export { square }
+            default export
+                    export {add as default}
+                    import {add} will give error as it is not named
+                    import add {sub} will be good to go
+        - install react react-dom and import them as npm packages
+        
+        - webpack loader
+            yarn add babel-core
+            yarn add babel-loader
+
+            in module.exports = { 
+                ..
+                ,
+                module: {
+                    rules: [{
+                        loader: 'babel-loader',
+                        test: /\.js$/,
+                        exclude: /node_modules/
+                    }]
+                }
+            }
+        - create .babelrc in root
+            "presets": [ "env" , "react"]
+        
+        - create components folder in src
+            move all the components AddOptions, Option, Remove etc to seperate files
+
+        - source maps
+            errors lines are from bundle.js and not from app.js
+            in webpack.config.js write
+                devtool: 'cheap-module-eval-source-map'
+        
+        - webpack dev-server
+            yarn add webpack-dev-server
+
+            in webpack.config.js write
+                devServer: {
+                    contentBase: path.join(__dirname, 'public')
+                }
+            in package.json scripts
+                dev-server: "webpack-dev-server"
+        
+        - Babel Plugin for Class properties
+            yarn add babel-plugin-transform-class-properties
+            inb .babelrc add
+                "plugins": [
+                    "transform-class-properties"
+                ]
