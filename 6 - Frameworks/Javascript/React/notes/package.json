@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "live": "yarn run live-server public",
-    "babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "babel": "babel src/toggle.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "dev": "(yarn run babel) & yarn run live"
   },
   "dependencies": {

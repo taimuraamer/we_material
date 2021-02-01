@@ -1,48 +1,49 @@
 class Counter extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      count: 0,
-    };
+      count: 0
+    }
     this.plus = this.plus.bind(this);
     this.minus = this.minus.bind(this);
     this.reset = this.reset.bind(this);
   }
 
   plus() {
-    this.setState((prevState) => {
+    this.setState((prev) => {
       return {
-        count: prevState.count + 1,
-      };
-    });
+        count: prev.count + 1
+      }
+    })
   }
   minus() {
     this.setState((prevState) => {
       return {
-        count: prevState.count - 1,
-      };
-    });
+        count: prevState.count - 1
+      }
+    })
   }
   reset() {
-    this.setState((prevState) => {
+    this.setState(() => {
       return {
-        count: 0,
-      };
-    });
+        count: 0
+      }
+    })
   }
 
   render() {
-    return (
+  
+    return(
       <div>
-        <h1>Count : {this.state.count}</h1>
-        <button onClick={this.plus}>+</button>
-        <button onClick={this.minus}>-</button>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.plus}>Plus</button>
+        <button onClick={this.minus}>Minu</button>
         <button onClick={this.reset}>Reset</button>
       </div>
-    );
+    ) 
   }
 }
 
-const appRoot = document.getElementById("app");
+const appRoot = document.getElementById('app')
 
-ReactDOM.render(<Counter />, appRoot);
+ReactDOM.render(<Counter />, appRoot)
