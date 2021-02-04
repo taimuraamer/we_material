@@ -5,14 +5,21 @@
   "license": "MIT",
   "scripts": {
     "live": "yarn run live-server public",
-    "babel": "babel src/toggle.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "dev": "(yarn run babel) & yarn run live"
+    "babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "build": "webpack --watch"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "webpack": "^5.20.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.5.0"
   }
-  
 }

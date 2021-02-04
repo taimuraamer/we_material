@@ -1,98 +1,168 @@
 
-class NotesApp extends React.Component {
-  
-    render() {
-      this.state = {
-      subjects: ["C++", "Java", "Python", "React"],
+
+
+class Notes extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: ["C++", "Java", "React", "Javascript", "Python"],
+      title: "To-Do App in React",
+      slogan: "Give it up for the mentis lords"
     }
-      const appTitle = "Our Notes App!!!";
-      const appSlogan = "The best To-Do App ever!";
-      return (
-          <div>
-              <Header
-                title={appTitle} 
-                slogan={appSlogan}
-              />
-              <PickTask length={this.state.subjects.length}/>
-              <Tasks subjects={this.state.subjects}/>
-              <RemoveAll length={this.state.subjects.length} handler={this.removeHandler}/>
-              <Footer />
-          </div>
-      )
-    }
-  
-    removeHandler() {
-      this.setState(() => {
-        subjects: []
-      })
+    this.pickTask = this.pickTask.bind(this)
+    this.removeAll = this.removeAll.bind(this)
+    this.addOption = this.addOption.bind(this)
+    this.removeOption = this.removeOption.bind(this)
+  }
+  render() {
+    return(
+      <div>
+        <Header title={this.state.title} slogan={this.state.slogan}/>
+        <PickTask pickTask={this.pickTask} length={this.state.options.length}/>
+        <Options options={this.state.options} removeOption={this.removeOption}/>
+        <AddOption addOption={this.addOption}/>
+        <RemoveAll removeAll={this.removeAll} length={this.state.options.length}/>
+      </div>
+    ) 
+  }
+  componentDidMount() {
+    const json = JSON.parse(localStorage.getItem("options"))
+    this.setState(() => {
+      return {
+        options: json
+      }
+    })
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.options.length != this.state.options.length)
+    {
+      const str = JSON.stringify(this.state.options)
+      localStorage.setItem("options", str)
     }
   }
-  class Header extends React.Component {
-    render() {
-      return (
-              <div>
-                <h1>{this.props.title}</h1>
-                <h3>{this.props.slogan}</h3>
-              </div>
-              )
-    }
+  pickTask()
+  {
+    const r = Math.floor(Math.random() * this.state.options.length)
+    window.alert(this.state.options[r])
   }
-  
-  class PickTask extends React.Component {
-    render() {
-      return (
-        <div>
-          <button disabled={this.props.length == 0}>Pick a task</button>
-        </div>
-      )
-    }
+  removeAll() {
+    this.setState(() => {
+      return {
+        options: []
+      }
+    })
   }
-  
-  class Tasks extends React.Component {
-    render() {
-      return(
-        <div>
-          {this.props.subjects.map((subject, index) => {
-            <Task sub={subject}/>
-          })}
-          
-        </div>
-      )
-    }
+  removeOption(optionText) {
+    this.setState((prevState) => {
+      return {
+        options: prevState.options.filter((option) => option != optionText)
+      }
+    })
   }
-  
-  class Task extends React.Component {
-    render() {
-      return (
-        <div>
-          <p>{this.props.subject}</p>
-        </div>
-      )
-    }
+  addOption(optionText) {
+    
+    if(optionText === "")
+      return 'Empty string is not allowed'
+    else if(optionText.length <=3)
+      return 'To Do item must be greater than 3 characters'
+    else if(this.state.options.indexOf(optionText) > -1)
+      return 'Item already in the list'
+    this.setState((prevState) => {
+      return {
+        options: prevState.options.concat(optionText)
+      }
+    })
   }
+}
+
+const Header = (props) => {
   
-  class RemoveAll extends React.Component {
-   
-    render() {
-      return (
-        <div>
+    return (
+      <div>
+        <h1>{props.title}</h1>
+        <h3>{props.slogan}</h3>
+      </div>
+    )
   
-          <button onClick={this.props.handler} disabled={this.props.length == 0}>Remove All</button>
-        </div>
-      )
-    }
+}
+
+class Options extends React.Component {
+  render() {
+    return (
+      <div>
+        <ol>
+          {this.props.options.map((option, key) => <Option option={option} key={key} removeOption={this.props.removeOption}/>)}
+        </ol>
+        {this.props.options.length == 0 && <p>No Options</p>}
+      </div>
+    )
   }
-  
-  class Footer extends React.Component {
-    render() {
-      return (
-        <div>
-          <p>@Copyright</p>
-        </div>
-      )
-    }
+}
+class Option extends React.Component {
+  render() {
+    return (
+      <div>
+        <li>
+          {this.props.option}
+          &nbsp;<button onClick={(e) => {
+            this.props.removeOption(this.props.option)
+          }}>X</button>
+        </li>
+      </div>
+    )
   }
-  
-  const AppRoot = document.getElementById('app')
-  
-  ReactDOM.render(<NotesApp />, AppRoot)
+}
+class RemoveAll extends React.Component {
+  render() {
+    return (
+      <div>
+        <button onClick={this.props.removeAll} disabled={this.props.length == 0}>Remove All Options</button>
+      </div>
+    )
+  }
+}
+class AddOption extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      error: undefined
+    }
+    this.addOption = this.addOption.bind(this);
+  }
+  addOption(e) {
+    
+    e.preventDefault();
+    const option = e.target.elements.option.value;
+    const error = this.props.addOption(option)
+    this.setState(() => {
+      return {
+      error: error
+      }
+    })
+  }
+  render() {
+    return (
+      <div>
+      {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.addOption}>
+          <input type="text" name="option"/>
+          <button>Add Option</button>
+        </form>
+        
+      </div>
+    )
+  }
+}
+class PickTask extends React.Component {
+  render() {
+    return (
+      <div>
+        <button onClick={this.props.pickTask} disabled={this.props.length == 0}>Pick A Task</button>
+      </div>
+    )
+  }
+}
+
+
+const appRoot = document.getElementById('app');
+ReactDOM.render(<Notes/>, appRoot)
