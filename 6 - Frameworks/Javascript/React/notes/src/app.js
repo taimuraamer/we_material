@@ -1,12 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-<<<<<<< HEAD
+// import Header from './components/header'
 
-
-const appRoot = document.getElementById('app');
-ReactDOM.render(<p>Testing...</p>, appRoot)
-=======
-import Header from './components/header'
 class Notes extends React.Component {
   constructor(props) {
     super(props);
@@ -90,6 +85,15 @@ class Notes extends React.Component {
 
 }
 
+const Header = (props) => {
+  return (
+      <div>
+        <h1>{props.title}</h1>
+        <h3>{props.slogan}</h3>
+      </div>
+    )
+  
+}
 
 
 const Options = (props) => {
@@ -177,4 +181,3 @@ class PickTask extends React.Component {
 
 const appRoot = document.getElementById('app');
 ReactDOM.render(<Notes/>, appRoot)
->>>>>>> 3866b8e9146cc20f2dbc996e9719c42c9d29bd98

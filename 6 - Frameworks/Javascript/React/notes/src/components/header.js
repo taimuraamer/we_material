@@ -10,4 +10,4 @@ const Header = (props) => {
     
   }
 
-export {Header}
+export default Header
