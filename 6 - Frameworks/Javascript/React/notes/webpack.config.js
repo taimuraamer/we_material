@@ -1,4 +1,5 @@
 const path = require('path')
+
 module.exports = {
     entry: './src/app.js',
     output: {
@@ -11,5 +12,11 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/
         }]
-    }
+    },
+    devtool: 'source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'public')
+    },
+    mode: 'development'
+
 }
