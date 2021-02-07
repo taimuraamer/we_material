@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import Header from './components/header'
+import AddOption from './components/AddOption'
+import Header from './components/Header'
 
 class Notes extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Notes extends React.Component {
   render() {
     return(
       <div>
-        <Header title={"TO DO APP"} slogan={"This is a slogan"}/>
+        <Header title={"TO DO APP!!"} slogan={"This is a slogan"}/>
         <PickTask pickTask={this.pickTask} length={this.state.options.length}/>
         <Options options={this.state.options} removeOneOption={this.removeOneOption}/>
         <AddOption options={this.state.options} add={this.addOptionToState}/>
@@ -84,18 +85,6 @@ class Notes extends React.Component {
   }
 
 }
-
-const Header = (props) => {
-  return (
-      <div>
-        <h1>{props.title}</h1>
-        <h3>{props.slogan}</h3>
-      </div>
-    )
-  
-}
-
-
 const Options = (props) => {
   
     return (
@@ -138,36 +127,7 @@ const RemoveAll = (props) => {
     )
   
 }
-class AddOption extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      error: undefined
-    }
-    this.addOption = this.addOption.bind(this)
-  }
-  addOption(e) {
-    e.preventDefault()
-    const option = e.target.elements.option.value;
-    const error = this.props.add(option);
-    this.setState(()=> {
-      return {
-        error: error
-      }
-    })
-  }
-  render() {
-    return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.addOption}>
-          <input type="text" name="option"/>
-          <button>Add Option</button>
-        </form>
-      </div>
-    )
-  }
-}
+
 class PickTask extends React.Component {
   render() {
     return (

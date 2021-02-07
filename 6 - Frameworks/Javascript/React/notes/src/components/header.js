@@ -7,7 +7,6 @@ const Header = (props) => {
           <h3>{props.slogan}</h3>
         </div>
       )
-    
   }
 
-export default Header
+export default Header;
