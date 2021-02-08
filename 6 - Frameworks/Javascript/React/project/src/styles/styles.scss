@@ -1,0 +1,27 @@
+@import './base/settings';
+@import './base/base';
+
+#app {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100px;
+    background: rgb(73, 79, 82);
+    color: white;
+}
+
+.nav-links {
+    width: 50%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-link-item {
+    color: white;
+}

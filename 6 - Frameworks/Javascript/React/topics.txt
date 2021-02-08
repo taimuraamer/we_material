@@ -256,3 +256,14 @@
                 "plugins": [
                     "transform-class-properties"
                 ]
+        - Setup Webpack with SCSS
+            - create src/styles/styles.css
+            - yarn add style-loader css-loader
+            in webpack.config.js
+                module: {
+                    ...
+                    ,
+                    {
+                        test: /\.css$/
+                    }
+                }
