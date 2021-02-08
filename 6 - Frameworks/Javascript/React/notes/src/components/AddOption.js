@@ -1,4 +1,5 @@
 import React from 'react'
+import TextField from '@material-ui/core/TextField';
 export default class AddOption extends React.Component {
     constructor(props) {
       super(props)
@@ -22,7 +23,7 @@ export default class AddOption extends React.Component {
         <div>
           {this.state.error && <p>{this.state.error}</p>}
           <form onSubmit={this.addOption}>
-            <input type="text" name="option"/>
+            <TextField  type="text" name="option" label="Enter an Option"/>
             <button>Add Option</button>
           </form>
 
