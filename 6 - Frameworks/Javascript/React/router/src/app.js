@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'normalize.css/normalize.css';
-import './styles/styles.scss';
+// import 'normalize.css/normalize.css';
+// import './styles/styles.scss';
 import Home from './components/Home'
 import About from './components/About'
 import Create from './components/Create'
@@ -14,13 +14,10 @@ const App = (props) => {
         <Router>
             <div>
                 <Nav />
-                <Switch>
                     <Route path="/" component={Home} exact/>
                     <Route path="/about" component={About} />
                     <Route path="/create" component={Create} />
-                    <Route path="/search/:id" component={Search} />
-                </Switch>
-                
+                    <Route path="/search/:id" children={<Search />} />
             </div>
         </Router>
     )

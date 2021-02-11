@@ -15,19 +15,30 @@
 
       function loadBooks() {
         var text = "";
+
+
+
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "books.json", true);
+        
+        xhr.open("GET", "https://api.github.com/users", true);
+
         xhr.onreadystatechange = function () {
           if (xhr.status == 200 && xhr.readyState == 4) {
+        
             const response = JSON.parse(xhr.responseText);
+        
             for(var i=0;i<response.length;i++) {
-                text+= '<p>' + response[i].title + '</p>';
+                text+= '<p>' + response[i].login + '</p>';
+                text+= '<p>' + response[i].type + '</p>';
+                text+= '<img src=' + response[i].avatar_url + ' width=300 height=300 />';
             }
+        
             document.getElementById('books').innerHTML = text;
           }
         };
 
         xhr.send();
+
       }
     </script>
   </body>
