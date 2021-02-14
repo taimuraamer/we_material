@@ -29,8 +29,8 @@
         
             for(var i=0;i<response.length;i++) {
                 text+= '<p>' + response[i].login + '</p>';
-                text+= '<p>' + response[i].type + '</p>';
-                text+= '<img src=' + response[i].avatar_url + ' width=300 height=300 />';
+                text+= '<p>' + response[i].id + '</p>';
+                text+= "<img src='"+response[i].avatar_url+"' width=200 heigth=200/>"
             }
         
             document.getElementById('books').innerHTML = text;

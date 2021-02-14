@@ -1,28 +1,16 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
+import Header from './components/Header'
+import './styles/styles.css'
+import { CssBaseline} from "@material-ui/core"
 
 const App = () => {
-    const [state, setState] = useState({count: 0, test: 'testing'});
 
-    function plus() {
-        setState((prevState) => {
-            return {
-                ...prevState, count: prevState.count + 1
-            }
-        })
-    }   
-    function minus() {
-        setState((prevState) => {
-            return {
-                ...prevState, count: prevState.count - 1
-            }
-        })
-    }   
+    const [state, setState] = useState(0);
     return (
         <div>
-            <button onClick={plus}>+</button>
-            <p>{state.count}{state.test}</p>
-            <button onClick={minus}>-</button>
+            <CssBaseline />
+            <Header />
         </div>
     )
 }
