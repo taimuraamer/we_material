@@ -1,68 +1,52 @@
-import './App.css';
-import {createStore} from 'redux'
+import { createStore } from "redux";
+import * as action from './actions'
+import {useEffect} from 'react';
 
-
-const incrimentBy = ({incrimentBy = 1} = {}) => ({
-  type: 'INCRIMENT',
-  incrimentBy
-})
-
-const reset = ({value = 100} = {}) => ({
-  type: 'RESET',
-  value
-})
-
-
-const store = createStore((state = {count: 0}, action) => {
-  switch(action.type)
-  {
-    case 'INCRIMENT':
+// 3. Reducer
+const counterReducer = (state = { count: 0 }, {id, type}) => {
+  // eslint-disable-next-line default-case
+  switch (type) 
+  { 
+    case "ADD":
       return {
-        count: state.count + action.incrimentBy
+        count: id ? state.count + id : state.count + 1
       }
-    case 'DECRIMENT':
-      const decrBy = typeof action.decrBy === 'number' ? action.decrBy : 1
+    case "SUB":
       return {
-        count: state.count - decrBy
-      }
-    case 'RESET':
-      return {
-        count: action.value
-      }
-    default:
-      return state
+        count: state.count - 1
+      };
   }
-})
+};
+
+const store = createStore(counterReducer);
+
+// 1. Action
+
+
+
+// 2. Dispatch
+const add = () => {
+    store.dispatch(action.ADD);
+    t = store.getState();
+    return <div>{t.count}</div>
+}
+
+let t = null;
 
 store.subscribe(() => {
-  console.log(store.getState())
+  // console.log(store.getState())
+  t = store.getState();
 })
 
+console.log(t)
 
-store.dispatch(incrimentBy()) // by 1
-store.dispatch(incrimentBy({incrimentBy: 10})) // by 10
-
-
-// store.dispatch({
-//   type: 'INCRIMENT',
-//   incrBy: 5
-// })
-
-
-store.dispatch({
-  type: 'DECRIMENT',
-  decrBy: 10
-})
-
-store.dispatch(reset({value: 500}))
-
-function App() {
-
+const App = () => {
   return (
-    <div className="App">
-      <p>This is it</p>
+    <div>
+      <p><button onClick={add}>Add</button></p>
+      <p>Count :</p>
     </div>
   );
-}
+};
 
 export default App;
