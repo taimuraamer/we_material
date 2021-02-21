@@ -1,3 +1,9 @@
+
+
+
+
+
+
 // function one()
 // {
 //     console.log("one")
@@ -25,7 +31,7 @@
 // {
 //     setTimeout(() => {
 //         console.log("One");
-//         callback();
+//         callback(); // flag
 //     },5000)
 // }
 // function two(callback)
@@ -43,6 +49,8 @@
 //     },1000)
 // }
 
+// one(() => two(() => three(() => {})))
+
 // one(()=>{
 //   two(() =>{
 //     three(() => {
@@ -57,7 +65,7 @@ function one() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("one");
-      resolve("done");
+      resolve("done");  //flag
     }, 5000);
   });
 }
@@ -93,6 +101,9 @@ async function run() {
 }
 
 run();
+
+
+
 
 // function one() {
 //   return new Promise((resolve, reject) => {
