@@ -1,9 +1,3 @@
-
-
-
-
-
-
 // const student = {
 //     name: "",
 //     age: 22,
@@ -18,17 +12,17 @@
 // }
 
 
-const values = {
-    a: 10,
-    b: 20,
-    test: 90
-}
+// const values = {
+//     a: 10,
+//     b: 20,
+//     test: 90
+// }
 
-const sum = ({a, b, test}) => {
-    return a + b + test;
-}
+// const sum = ({a, b, test}) => {
+//     return a + b + test;
+// }
 
-console.log(sum(values))
+// console.log(sum(values))
 // const {name: fullName} = student;
 
 // const [, st] = ["330", "10", "J5", "3", "Peshawar"]
@@ -66,11 +60,14 @@ console.log(sum(values))
 //     console.log(marks[i])
 // }
 
+// const ages = [50,66,73,44,46,1,2,90,42,34]
 
+// ages.forEach((age) => {
+//     console.log(age)
+// })
 
-
-
-
-
-
-
+// ages.filter((age) => {
+//     return age != 73
+// }).forEach((age) => {
+//     console.log(age)
+// })
