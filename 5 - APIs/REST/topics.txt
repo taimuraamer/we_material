@@ -1,0 +1,5 @@
+yarn add express
+yarn add nodemon
+add start script
+yarn add dotenv
+yarn add mongoose

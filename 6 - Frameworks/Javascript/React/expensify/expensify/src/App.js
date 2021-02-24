@@ -23,7 +23,6 @@ const removeExpense = ({ id } = {}) => ({
   id
 })
 
-
 const expensesReducer = (state = [], action) => {
   switch (action.type) {
       case 'ADD_EXPENSE':
@@ -38,13 +37,12 @@ const expensesReducer = (state = [], action) => {
   }
 }
 
-const filterReducerDefaultState = {
+const filterReducer = (state = {
   text: '',
   sortBy: 'date', // date or amount,
   startDate: undefined,
   endDate: undefined
-}
-const filterReducer = (state = filterReducerDefaultState, action) => {
+}, action) => {
   switch (action.type) {
       default:
         return state
