@@ -10,15 +10,25 @@ const bookValidation = (book) => {
     return error.details[0].message;
 }
 
-const userValidation = (user) => {
+const userRegisterValidation = (user) => {
     const userSchema = Joi.object({
         name: Joi.string().required().min(4).max(200),
         email: Joi.string().email().required(),
         password: Joi.string().required().min(4).max(200)
     })
     const { error } = userSchema.validate(user)
-    return error.details[0].message;
+    return error;
+}
+
+const userLoginValidation = (user) => {
+    const userSchema = Joi.object({
+        email: Joi.string().email().required(),
+        password: Joi.string().required().min(4).max(200)
+    })
+    const { error } = userSchema.validate(user)
+    return error;
 }
 
 module.exports.bookValidation = bookValidation;
-module.exports.userValidation = userValidation;
+module.exports.userRegisterValidation = userRegisterValidation;
+module.exports.userLoginValidation = userLoginValidation;

@@ -9,6 +9,7 @@ const usersRouter = require('./routes/users')
 // middleware
 app.use(express.json())
 app.use('/books', booksRouter)
+app.use('/users', usersRouter)
 
 app.get('/', (req, res) => {
     res.send('We are on home page.')
