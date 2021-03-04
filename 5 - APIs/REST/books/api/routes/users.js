@@ -3,6 +3,7 @@ const router = express.Router();
 const { userLoginValidation, userRegisterValidation } = require('../validation/request')
 const Users = require('../model/Users')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 router.post('/register', async (req, res) => {
 
@@ -46,11 +47,10 @@ router.post('/login', async (req, res) => {
     const compare = await bcrypt.compare(input.password, user.password)
     if (!compare) return res.send('Invalid password')
 
-    res.send("Successfully logged in.")
-    // We will create a auth token
-    // thne we will verify if that token is valid
-    // aftewards we will create custom middlware and use it in different routes.
-
+    const token = jwt.sign({ _id: user.id }, process.env.SECRET)
+    if (!token) return res.send('invalid token')
+    res.header('auth-token', token)
+    res.send({ token: token })
 })
 
 module.exports = router;

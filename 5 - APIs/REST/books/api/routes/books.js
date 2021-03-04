@@ -5,7 +5,16 @@ const { bookValidation } = require('../validation/request')
 
 // get all books
 router.get('/', (req, res) => {
-    res.send('testing...')
+    res.send([{
+        title: "C++",
+        author: "Dietel",
+        price: 500
+    },
+    {
+        title: "Java",
+        author: "Dietel",
+        price: 500
+    }])
 })
 
 // get a specific book
